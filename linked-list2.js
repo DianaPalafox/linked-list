@@ -64,14 +64,48 @@ const LinkedList = () => {
         if (head === null) return
         else {
             let currentNode = head; 
-            while(currentNode.data !== index) {
+            let i = -1; 
+            while(currentNode !== null) {
+                i++;
+                if(i === index) {
+                    return currentNode;
+                }
                 currentNode = currentNode.next;
             }
-            return currentNode; 
+        i = -1; 
+        }
+    }
+    //removes the last element from the list
+    const pop = () => {
+       if(head == null) return; 
+       else{
+            let currentNode = head;
+            let previousNode; 
+           while(currentNode.next !== null){
+               previousNode = currentNode
+               currentNode = currentNode.next 
+           }
+           previousNode.next = null; 
+       }
+       lenght--
+    }
+    //returns true if the passed in value is in the list and otherwise returns false.
+    const find = (value) => {
+        if(head === null) return false; 
+        if(head.data === value) return true;
+        else{
+            let currentNode = head; 
+            while(currentNode !== null){
+                if(currentNode.data === value) {
+                    return true; 
+                }
+            currentNode = currentNode.next; 
+            }
+            return false; 
         }
     }
 
-    return {append, prepend, size, getHead, tail};
+    return {append, prepend, size, getHead, tail, at, pop, find};
 };
 
 let list = LinkedList();
@@ -79,7 +113,9 @@ list.append('puppy')
 list.append('kitten')
 list.append('fish')
 list.prepend('cat')
-console.log(list.size())
+list.pop()
 console.log(list.getHead())
 console.log(list.tail())
-console.log(list.at('puppy'))
+console.log(list.at(2))
+console.log(list.size())
+console.log(list.find('shark'))
