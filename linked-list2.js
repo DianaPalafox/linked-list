@@ -3,7 +3,7 @@ const Node = (value) => {
     let next = null; 
 
     return {data, next}
-}
+};
 
 const LinkedList = () => {
     let head = null; 
@@ -58,13 +58,21 @@ const LinkedList = () => {
             }
             return currentNode; 
         }
+    };
+    //returns the node at the given index
+    const at = (index) => {
+        if (head === null) return
+        else {
+            let currentNode = head; 
+            while(currentNode.data !== index) {
+                currentNode = currentNode.next;
+            }
+            return currentNode; 
+        }
     }
 
-
-
-
-    return (append, prepend, size, getHead, tail)
-}
+    return {append, prepend, size, getHead, tail};
+};
 
 let list = LinkedList();
 list.append('puppy')
@@ -74,3 +82,4 @@ list.prepend('cat')
 console.log(list.size())
 console.log(list.getHead())
 console.log(list.tail())
+console.log(list.at('puppy'))
