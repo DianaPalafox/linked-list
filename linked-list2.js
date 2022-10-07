@@ -104,8 +104,16 @@ const LinkedList = () => {
             return false; 
         }
     }
-
-    return {append, prepend, size, getHead, tail, at, pop, find};
+    const toString = () => {
+        let currentNode = head; 
+        let string = ''; 
+        while(currentNode !== null){
+            string = `${string} ${currentNode.data} ->`
+            currentNode = currentNode.next; 
+        }
+        return string + ' null';
+    }
+    return {append, prepend, size, getHead, tail, at, pop, find, toString};
 };
 
 let list = LinkedList();
@@ -119,3 +127,4 @@ console.log(list.tail())
 console.log(list.at(2))
 console.log(list.size())
 console.log(list.find('shark'))
+console.log(list.toString())
