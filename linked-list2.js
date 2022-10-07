@@ -21,10 +21,35 @@ function LinkedList() {
             }
             currentNode.next = Node(value); 
         }
+        lenght++
 
     }
     //adds a new node containing value to the start of the list
-   
+    const prepend = (value) => {
+        let node = Node(value)
+        if(head === null) {
+            head = node; 
+            return head; 
+        }
+        else{
+            node.next = head; 
+            head = node; 
+            
+        }
+        lenght++
+        return head; 
+    }
+    //returns the total number of nodes in the list
+    
 
 
+
+
+    return (append, prepend)
 }
+
+let list = LinkedList();
+console.log(list.append('puppy'))
+console.log(list.append('kitten'))
+console.log(list.prepend('cat'))
+
