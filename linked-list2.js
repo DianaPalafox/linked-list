@@ -1,11 +1,11 @@
-function Node(data) {
-    const data = data;
-    const next = null; 
+const Node = (value) => {
+    let data = value; 
+    let next = null; 
 
-    return {next}
+    return {data, next}
 }
 
-function LinkedList() {
+const LinkedList = () => {
     let head = null; 
     let lenght = 0;
 
@@ -40,16 +40,37 @@ function LinkedList() {
         return head; 
     }
     //returns the total number of nodes in the list
-    
+    const size = () => {
+        return lenght;
+    }
+    //returns the first node in the list
+    const getHead = () => {
+        return head; 
+    }
+    //returns the last node in the list
+    const tail = () => {
+        if (head === null) return;
+        if(head.next === null) return head; 
+        else {
+            let currentNode = head; 
+            while(currentNode.next !== null) {
+                currentNode = currentNode.next; 
+            }
+            return currentNode; 
+        }
+    }
 
 
 
 
-    return (append, prepend)
+    return (append, prepend, size, getHead, tail)
 }
 
 let list = LinkedList();
-console.log(list.append('puppy'))
-console.log(list.append('kitten'))
-console.log(list.prepend('cat'))
-
+list.append('puppy')
+list.append('kitten')
+list.append('fish')
+list.prepend('cat')
+console.log(list.size())
+console.log(list.getHead())
+console.log(list.tail())
