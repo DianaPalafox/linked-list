@@ -7,7 +7,7 @@ const Node = (value) => {
 
 const LinkedList = () => {
     let head = null; 
-    let lenght = 0;
+    let length = 0;
 
     //adds a new node containing value to the end of the list
     const append = (value) => {
@@ -21,8 +21,7 @@ const LinkedList = () => {
             }
             currentNode.next = Node(value); 
         }
-        lenght++
-
+        length++
     }
     //adds a new node containing value to the start of the list
     const prepend = (value) => {
@@ -36,12 +35,12 @@ const LinkedList = () => {
             head = node; 
             
         }
-        lenght++
+        length++
         return head; 
     }
     //returns the total number of nodes in the list
     const size = () => {
-        return lenght;
+        return length;
     }
     //returns the first node in the list
     const getHead = () => {
@@ -87,7 +86,7 @@ const LinkedList = () => {
            }
            previousNode.next = null; 
        }
-       lenght--
+       length--
     }
     //returns true if the passed in value is in the list and otherwise returns false.
     const find = (value) => {
@@ -117,11 +116,11 @@ const LinkedList = () => {
     //inserts a new node with the provided value at the given index.
     const insertAt = (value, index) => {
         let node = Node(value); 
-        let currentIndex = 0
+        let currentIndex = -1;
         let previousNode;
         let currentNode = head; 
 
-        if (head === null) return;
+        if (!head) return;
         if (head.next === null){
             if(currentIndex === index){
                 head = node; 
@@ -142,8 +141,29 @@ const LinkedList = () => {
                 }
             }
         }
+        length++; 
     }
-    return {append, prepend, size, getHead, tail, at, pop, find, toString, insertAt};
+    //removes the node at the given index.
+    const removeAt = (index) => {
+        if (!head) return;
+        else {
+            let currentIndex = -1; 
+            let previousNode;
+            let currentNode = head; 
+
+            while(currentNode !== null){
+                currentIndex++
+                previousNode = currentNode;
+                currentNode = currentNode.next; 
+                if(currentIndex === index){
+                    previousNode.next = currentNode.next;
+                }
+            }
+        }
+        length--;
+    }
+
+    return {append, prepend, size, getHead, tail, at, pop, find, toString, insertAt, removeAt};
 };
 
 let list = LinkedList();
@@ -160,3 +180,6 @@ console.log(list.getHead())
 console.log(list.insertAt('horsie', 1))
 console.log(list.toString())
 console.log(list.tail())
+console.log(list.removeAt(1))
+console.log(list.toString())
+
