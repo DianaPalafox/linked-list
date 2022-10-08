@@ -117,30 +117,31 @@ const LinkedList = () => {
     //inserts a new node with the provided value at the given index.
     const insertAt = (value, index) => {
         let node = Node(value); 
-        let i = -1; 
-        if(head.next == null){
-            i++
-            if(i === index){
+        let currentIndex = 0
+        let previousNode;
+        let currentNode = head; 
+
+        if (head === null) return;
+        if (head.next === null){
+            if(currentIndex === index){
                 head = node; 
                 return head; 
             }
         }
-        if(!head) return; 
         else{
-            let currentNode = head; 
             while(currentNode !== null){
-                i++
-                if(i === index){
+                currentIndex++
+                previousNode = currentNode;
+                currentNode = currentNode.next
+                if(currentIndex === index){
                     node.next = currentNode
                     currentNode = node; 
+                    previousNode.next = currentNode
+                    currentNode = currentNode.next
                     return currentNode; 
                 }
-                currentNode = currentNode.next; 
             }
         }
-        lenght++
-        i=-1;
-        return currentNode; 
     }
     return {append, prepend, size, getHead, tail, at, pop, find, toString, insertAt};
 };

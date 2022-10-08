@@ -117,36 +117,7 @@ class LinkedList {
             currentNode = currentNode.next
         }
         return string + ' null';  
-    }
-
-    insertAt(value, index){
-        let node = new Node(value); 
-        let i = -1; 
-        if(this.head.next == null){
-            i++
-            if(i === index){
-                this.head = node; 
-                return this.head; 
-            }
-        }
-        if(!this.head) return; 
-        else{
-            let currentNode = this.head; 
-            while(currentNode !== null){
-                i++
-                if(i === index){
-                    node.next = currentNode
-                    currentNode = node; 
-                    return currentNode; 
-                }
-                currentNode = currentNode.next; 
-            }
-        }
-        this.lenght++
-        i=-1;
-        return currentNode; 
-    }
-    
+    } 
 
 }
 
