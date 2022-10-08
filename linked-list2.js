@@ -113,7 +113,36 @@ const LinkedList = () => {
         }
         return string + ' null';
     }
-    return {append, prepend, size, getHead, tail, at, pop, find, toString};
+    //EXTRAS
+    //inserts a new node with the provided value at the given index.
+    const insertAt = (value, index) => {
+        let node = Node(value); 
+        let i = -1; 
+        if(head.next == null){
+            i++
+            if(i === index){
+                head = node; 
+                return head; 
+            }
+        }
+        if(!head) return; 
+        else{
+            let currentNode = head; 
+            while(currentNode !== null){
+                i++
+                if(i === index){
+                    node.next = currentNode
+                    currentNode = node; 
+                    return currentNode; 
+                }
+                currentNode = currentNode.next; 
+            }
+        }
+        lenght++
+        i=-1;
+        return currentNode; 
+    }
+    return {append, prepend, size, getHead, tail, at, pop, find, toString, insertAt};
 };
 
 let list = LinkedList();
@@ -123,8 +152,10 @@ list.append('fish')
 list.prepend('cat')
 list.pop()
 console.log(list.getHead())
-console.log(list.tail())
-console.log(list.at(2))
-console.log(list.size())
-console.log(list.find('shark'))
+//console.log(list.tail())
+//console.log(list.at(1))
+//console.log(list.size())
+//console.log(list.find('shark'))
+console.log(list.insertAt('horsie', 1))
 console.log(list.toString())
+console.log(list.tail())

@@ -116,9 +116,37 @@ class LinkedList {
             string = `${string} ${currentNode.data} ->`
             currentNode = currentNode.next
         }
-        return string + ' null'; 
-        
+        return string + ' null';  
     }
+
+    insertAt(value, index){
+        let node = new Node(value); 
+        let i = -1; 
+        if(this.head.next == null){
+            i++
+            if(i === index){
+                this.head = node; 
+                return this.head; 
+            }
+        }
+        if(!this.head) return; 
+        else{
+            let currentNode = this.head; 
+            while(currentNode !== null){
+                i++
+                if(i === index){
+                    node.next = currentNode
+                    currentNode = node; 
+                    return currentNode; 
+                }
+                currentNode = currentNode.next; 
+            }
+        }
+        this.lenght++
+        i=-1;
+        return currentNode; 
+    }
+    
 
 }
 
@@ -135,12 +163,13 @@ list.append('puppy')
 list.append('dog')
 list.prepend('cat')
 list.prepend('fish')
-console.log(list.size())
-console.log(list.tail())
+//console.log(list.size())
+//console.log(list.tail())
+console.log(list.insertAt('horsie', 1))
 console.log(list.getHead())
-console.log(list.pop())
-console.log(list.at('cat'))
-console.log(list.contains('shark'))
-console.log(list.find('fish'))
-console.log(list.find('shark'))
+//console.log(list.pop())
+//console.log(list.at('cat'))
+//console.log(list.contains('shark'))
+//console.log(list.find('fish'))
+//console.log(list.find('shark'))
 console.log(list.toString())
